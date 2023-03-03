@@ -61,6 +61,10 @@ const getBillCount = (evt) => {
 const getNumberOfPeopleCount = (evt) => {
     if (evt.target.value > 3) {
         evt.target.value = evt.target.value.slice(0, 3)
+    } else if (evt.target.value.indexOf('.') !== -1) {
+        evt.target.value = Math.trunc(evt.target.value)
+    } else if (evt.target.value.indexOf('-') === 0) {
+        evt.target.value = evt.target.value.slice(1)
     }
 
     const value = evt.target.value;
