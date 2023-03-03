@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./stylesheets/style.css">
+  <title>Frontend Mentor | Tip calculator app</title>
+</head>
+<body class="page">
+
+  <sectoin class="dashboard page__content">
+    <div class="dashboard__content">
+      <div class="dashboard__logo"></div>
+
+      <article class="dashboard__item dashboard__item_type_calc">
+        <label for="billInput" class="dashboard__label dashboard__label_type_billLabel">
+          Bill
+          <span class="dashboard__errorMessage dashboard__errorMessage_type_billCount">Can't be zero</span>
+          <span class="dashboard__inputIcon dashboard__inputIcon_type_bill"></span>
+          <input type="number" class="dashboard__input dashboard__input_type_billInput" id="billInput" placeholder="0" autocomplete="off">
+        </label>
+
+        <div class="dashboards__buttons">
+          <p class="dashboard__buttonsTitle">Select Tip %</p>
+          <div class="dashboard__buttonsContainer">
+            <button type="button" id="fivePercent" class="dashboard__button">5%</button>
+            <button type="button" id="tenPercent" class="dashboard__button">10%</button>
+            <button type="button" id="fifteenPercent" class="dashboard__button">15%</button>
+            <button type="button" id="twentyFivePercent" class="dashboard__button">25%</button>
+            <button type="button" id="fiftyPercent" class="dashboard__button">50%</button>
+            <input type="number" id="customPercent" class="dashboard__input dashboard__input_type_selectTipInput" placeholder="Custom" min="1" max="99" autocomplete="off">
+          </div>
+        </div>
+
+        <label for="numberInput" class="dashboard__label dashboard__label_type_numberLabel">
+          Number of People
+          <span class="dashboard__errorMessage dashboard__errorMessage_type_numberOfPeople">Can't be zero</span>
+          <span class="dashboard__inputIcon dashboard__inputIcon_type_number"></span>
+          <input type="number" class="dashboard__input dashboard__input_numberInput" id="numberInput" placeholder="0" autocomplete="off">
+        </label>
+      </article>
+
+      <article class="dashboard__item dashboard__item_type_result">
+        <div class="dashboard__resultsContainer">
+          <div class="dashboard__resultContainer">
+            <div class="dashboard__titleContainer">
+              <p class="dashboard__resultTitle">Tip Amount</p>
+              <p class="dashboard__tipAmountSubtitle">/ person</p>
+            </div>
+            <p class="dashboard__result" id="tipAmountInput">$0.00</p>
+          </div>
+
+          <div class="dashboard__resultContainer">
+            <div class="dashboard__titleContainer">
+              <p class="dashboard__resultTitle">Total</p>
+              <p class="dashboard__tipAmountSubtitle">/ person</p>
+            </div>
+            <p class="dashboard__result" id="totalInput">$0.00</p>
+          </div>
+        </div>
+
+        <button type="reset" class="dashboard__resetButton dashboard__resetButton_type_inactive">RESET</button>
+      </article>
+    </div>
+  </sectoin>
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/RotckinAN" target="_blank">Rotckin Anatolii</a>.
+  </div>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>

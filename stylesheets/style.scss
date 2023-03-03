@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&family=Space+Mono:wght@700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* colors */
+$cyan-100: hsl(189, 41%, 97%);
+$cyan-200: hsl(185, 41%, 84%);
+$cyan-300: hsl(184, 14%, 56%);
+$cyan-400: hsl(186, 14%, 43%);
+$cyan-500-light: hsl(171, 81%, 51%);
+$cyan-500: hsl(172, 67%, 45%);
+$cyan-600: hsl(183, 100%, 15%);
+$white: hsl(0, 0%, 100%);
+$red: hsl(15, 79%, 48%);
+
+/* typography */
+$font-family: 'Space Mono', sans-serif;
+$font-weight-normal: 700;
+$font-size-base: 24px;
+
+/* label basic styles */
+%labelStyles {
+  font-size: 15px;
+  color: $cyan-400;
+}
+
+/* mixins */
+@mixin background-image($linkImage, $width, $height) {
+  background-image: url($linkImage);
+  width: $width;
+  height: $height;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@mixin buttonStyles($fontFamily, $fontSize) {
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  border-color: transparent;
+  opacity: 1;
+  transition: 0.1s linear;
+}
+
+.page {
+  margin: 0;
+  background-color: $cyan-200;
+  font-family: $font-family;
+  font-weight: $font-weight-normal;
+  font-size: $font-size-base;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard__content {
+  background-color: $white;
+  width: 920px;
+  min-height: 485px;
+  border-radius: 25px;
+  position: relative;
+  display: flex;
+  padding: 30px;
+  gap: 30px;
+}
+
+.dashboard__logo {
+  @include background-image('../images/logo.svg', 88px, 54px);
+  position: absolute;
+  top: -140px;
+  left: (920px / 2) - (88px / 2);
+}
+
+.dashboard__item{
+  //flex-shrink: 0;
+  width: calc(50% - 15px);
+  display: flex;
+  flex-direction: column;
+  padding: 15px 15px;
+  justify-content: space-between;
+}
+
+.dashboard__item_type_result {
+  background-color: $cyan-600;
+  border-radius: 15px;
+  padding: 45px;
+}
+
+.dashboard__label {
+  @extend %labelStyles;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.dashboard__errorMessage {
+  color: $red;
+  display: none;
+}
+
+.dashboard__errorMessage_active {
+  display: block;
+}
+
+.dashboard__buttonsTitle {
+  @extend %labelStyles;
+  margin: 0;
+  padding-bottom: 17px;
+}
+
+.dashboard__inputIcon {
+  position: absolute;
+  left: 15px;
+  top: 45px;
+}
+
+.dashboard__inputIcon_type_bill {
+  @include background-image('../images/icon-dollar.svg', 15px, 15px);
+}
+
+.dashboard__inputIcon_type_number {
+  @include background-image('../images/icon-person.svg', 15px, 15px);
+}
+
+.dashboard__input {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  color: $cyan-600;
+  text-align: end;
+  width: 100%;
+  height: 45px;
+  border-radius: 5px;
+  background-color: $cyan-100;
+  border: 2px solid transparent;
+  margin: 10px 0;
+  padding: 0 15px;
+}
+
+.dashboard__input_type_selectTipInput {
+  height: 50px;
+  margin: 0;
+  padding: 0 5px;
+}
+
+.dashboard__input_type_error {
+  border: 2px solid $red;
+}
+
+.dashboard__input::placeholder {
+  color: $cyan-300;
+  opacity: 0.8;
+  text-align: end;
+}
+
+.dashboard__input_type_selectTipInput::placeholder {
+  text-align: center;
+  opacity: 1;
+}
+
+.dashboard__input:focus,
+.dashboard__selectTipInput:focus {
+  border-color: $cyan-500;
+  outline: none;
+}
+
+.dashboard__buttonsContainer {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.dashboard__button {
+  @include buttonStyles($font-family, $font-size-base);
+  background-color: $cyan-600;
+  color: $cyan-100;
+  opacity: 1;
+  transition: 0.1s linear;
+}
+
+.dashboard__button_type_active {
+  background-color: $cyan-500
+}
+
+.dashboard__button:hover {
+  cursor: pointer;
+  background-color: $cyan-500-light;
+  //opacity: 0.8;
+}
+
+.dashboard__resultContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard__resultsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+
+.dashboard__titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard__resultTitle {
+  font-size: 15px;
+  color: $cyan-100;
+}
+
+.dashboard__tipAmountSubtitle {
+  font-size: 12px;
+  color: $cyan-300;
+}
+
+.dashboard__result {
+  font-size: 40px;
+  color: $cyan-500;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dashboard__resetButton {
+  @include buttonStyles($font-family, 20px);
+  background-color: $cyan-500;
+  color: $cyan-600;
+}
+
+.dashboard__resetButton_type_inactive {
+  opacity: 0.65;
+}
+
+.dashboard__resetButton:hover {
+  background-color: $cyan-500-light;
+  //opacity: 0.8;
+  cursor: pointer;
+}
+
+.dashboard__resetButton_type_inactive:hover {
+  cursor: default;
+  background-color: $cyan-500;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+
+  a {
+    color: hsl(228, 45%, 44%);
+    text-decoration: none
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .dashboard__content {
+    width: 375px;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 20px 20px 35px 20px;
+  }
+
+  .dashboard__logo {
+    top: -80px;
+    left: (375px / 2) - (88px / 2);
+  }
+
+  .dashboard__item {
+    width: 100%;
+  }
+
+  .dashboard__item_type_result {
+    padding: 25px;
+  }
+
+  .dashboard__buttonsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard__label,
+  .dashboard__buttonsTitle {
+    margin-top: 30px;
+  }
+
+  .dashboard__input {
+    margin-bottom: 0;
+  }
+
+  .dashboard__resultsContainer {
+    gap: 30px;
+    padding: 20px 0 35px 0;
+  }
+
+  .dashboard__resultTitle {
+    font-size: 12px;
+  }
+
+  .dashboard__result {
+    font-size: 32px;
+  }
+}
+
