@@ -1,4 +1,4 @@
-# Приложения по расчету чаевых
+# Приложение по расчету чаевых
 ![Design preview for the Tip calculator app coding challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
